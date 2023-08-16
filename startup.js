@@ -2,6 +2,8 @@ function createButton(name, code) {
     var form = document.createElement("form")
     form.setAttribute("hx-get", "/cm")
     form.setAttribute("hx-target", "#debug")
+    form.setAttribute("hx-ext", "disable-element")
+    form.setAttribute("hx-disable-element", "self")
 
     var btn = document.createElement("button")
     btn.innerText = name
@@ -16,17 +18,29 @@ function createButton(name, code) {
 }
 
 window.onload = ()=>{
+
     // Topping DX3 Pro+
-    var buttons = [
+    var topping = [
         createButton("Mute", "NEC-88-6-0"),
         createButton("Power", "NEC-88-18-0"),
-        createButton("Volume Up", "NEC-88-46-0"),
-        createButton("Volume Down", "NEC-88-16-0"),
-        createButton("Right", "NEC-88-15-0"),
-        createButton("Left", "NEC-88-47-0"),
+        createButton("Volume +", "NEC-88-46-0"),
+        createButton("Volume -", "NEC-88-16-0"),
+        createButton(">", "NEC-88-15-0"),
+        createButton("<", "NEC-88-47-0"),
         createButton("Middle", "NEC-88-55-0"),
         createButton("Headphones", "NEC-88-4-0"),
-        createButton("Line out", "NEC-88-40-0")
+        createButton("Line out", "NEC-88-40-0"),
+    ]
+
+    var lgc1 = [
+        createButton("Power", "NEC-4-8-0"),
+        createButton("Volume -", "NEC-4-3-0"),
+        createButton("Volume +", "NEC-4-2-0"),
+    ]
+
+    var remotes = [
+        topping,
+        lgc1,
     ]
 
 
@@ -36,7 +50,7 @@ window.onload = ()=>{
 
     var body = document.getElementsByTagName("body")[0];
 
-    buttons.forEach(function(button) {
+    topping.forEach(function(button) {
         body.appendChild(button)
     })
 
