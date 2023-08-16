@@ -2,11 +2,11 @@ function createButton(name, code) {
     var form = document.createElement("form")
     form.setAttribute("hx-get", "/cm")
     form.setAttribute("hx-target", "#debug")
-    form.setAttribute("hx-ext", "disable-element")
-    form.setAttribute("hx-disable-element", "self")
-
+    
     var btn = document.createElement("button")
     btn.innerText = name
+    btn.setAttribute("hx-ext", "disable-element")
+    btn.setAttribute("hx-disable-element", "self")
 
     var cmnd = document.createElement("input")
     cmnd.setAttribute("type", "hidden")
@@ -54,14 +54,20 @@ window.onload = ()=>{
         body.appendChild(button)
     })
 
-    //body.appendChild(mute)
     body.appendChild(debug)
 
 
-    var htmx = document.createElement('script');
-    htmx.setAttribute('integrity',"sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV");
-    htmx.setAttribute('crossorigin',"anonymous");
-    htmx.setAttribute('src', "https://unpkg.com/htmx.org@1.9.4");
+    var s1 = document.createElement('script');
+    s1.setAttribute("id", "htmx-lib")
+    s1.setAttribute('integrity',"sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV");
+    s1.setAttribute('crossorigin',"anonymous");
+    s1.setAttribute('src', "https://unpkg.com/htmx.org@1.9.4");
+    s1.addEventListener('load', function() {
+        var s2 = document.createElement('script');
+        s2.setAttribute('src', 'https://unpkg.com/htmx.org/dist/ext/disable-element.js')
+        s2.defer = true
+        document.head.appendChild(s2)
+    });
 
-    document.head.appendChild(htmx);
+    document.head.appendChild(s1);
 }
