@@ -7,6 +7,7 @@ function createButton(name, code) {
     btn.innerText = name
     btn.setAttribute("hx-ext", "disable-element")
     btn.setAttribute("hx-disable-element", "self")
+    btn.setAttribute("class", "mui-btn mui-btn--large mui-btn--primary")
 
     var cmnd = document.createElement("input")
     cmnd.setAttribute("type", "hidden")
@@ -17,8 +18,23 @@ function createButton(name, code) {
     return form
 }
 
-window.onload = ()=>{
+function installHtmx() {
+    var s1 = document.createElement('script');
+    s1.setAttribute("id", "htmx-lib")
+    s1.setAttribute('integrity',"sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV");
+    s1.setAttribute('crossorigin',"anonymous");
+    s1.setAttribute('src', "https://unpkg.com/htmx.org@1.9.4");
+    s1.addEventListener('load', function() {
+        var s2 = document.createElement('script');
+        s2.setAttribute('src', 'https://unpkg.com/htmx.org/dist/ext/disable-element.js')
+        s2.defer = true
+        document.head.appendChild(s2)
+    });
 
+    document.head.appendChild(s1);
+}
+
+function createRemote() {
     // Topping DX3 Pro+
     var topping = [
         createButton("Mute", "NEC-88-6-0"),
@@ -55,19 +71,21 @@ window.onload = ()=>{
     })
 
     body.appendChild(debug)
+}
 
+function installMaterialUI(){
+    // <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    //<script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
 
-    var s1 = document.createElement('script');
-    s1.setAttribute("id", "htmx-lib")
-    s1.setAttribute('integrity',"sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV");
-    s1.setAttribute('crossorigin',"anonymous");
-    s1.setAttribute('src', "https://unpkg.com/htmx.org@1.9.4");
-    s1.addEventListener('load', function() {
-        var s2 = document.createElement('script');
-        s2.setAttribute('src', 'https://unpkg.com/htmx.org/dist/ext/disable-element.js')
-        s2.defer = true
-        document.head.appendChild(s2)
-    });
+    var css = document.createElement('link')
+    css.setAttribute("href","//cdn.muicss.com/mui-0.10.3/css/mui.min.css")
+    css.setAttribute("rel", "stylesheet")
+    css.setAttribute("type", "text/css")
+    document.head.appendChild(css)
+}
 
-    document.head.appendChild(s1);
+window.onload = ()=>{
+    installHtmx();
+    installMaterialUI();
+    createRemote();
 }
