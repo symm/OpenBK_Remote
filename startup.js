@@ -66,9 +66,39 @@ function createRemote() {
 
     var body = document.getElementsByTagName("body")[0];
 
-    topping.forEach(function(button) {
-        body.appendChild(button)
+    var tabs = []
+    // TODO: remove hardcoded names
+    remotes.forEach(function(remote, index) {
+        var tab = document.createElement("div")
+        tab.setAttribute("class", "mui-tabs__pane")
+        tab.setAttribute("id", "pane-default-" + index)
+        remote.forEach(function(button){
+            tab.appendChild(button)
+        })
+        tabs.push(tab)
     })
+
+    var list = document.createElement('ul')
+    list.setAttribute("class", "mui-tabs__bar")
+    var tabBars = ["Topping DX3 Pro+", "LG C1"]
+    tabBars.forEach(function(tabBar, index){
+        var item = document.createElement('li')
+        item.setAttribute("class", index == 0 ?"mui--is-active" : "")
+        var link = document.createElement("a")
+        link.setAttribute("data-mui-toggle", "tab")
+        link.setAttribute("data-mui-controls", "pane-default-" + index)
+        link.innerHTML = tabBar
+        item.appendChild(link);
+        list.appendChild(item)
+    })
+    body.appendChild(list)
+
+
+    tabs.forEach(function(tab){
+        body.appendChild(tab)
+    })
+
+    document.getElementsByClassName("mui-tabs__pane")[0].setAttribute("class","mui-tabs__pane mui--is-active")
 
     body.appendChild(debug)
 }
@@ -82,6 +112,10 @@ function installMaterialUI(){
     css.setAttribute("rel", "stylesheet")
     css.setAttribute("type", "text/css")
     document.head.appendChild(css)
+
+    var script = document.createElement('script')
+    script.setAttribute('src', '//cdn.muicss.com/mui-0.10.3/js/mui.min.js')
+    document.head.appendChild(script)
 }
 
 window.onload = ()=>{
