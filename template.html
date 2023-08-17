@@ -99,18 +99,31 @@
     </div>
 
     <div class="mui-tabs__pane" id="pane-default-1">
-      <form hx-get="/cm" hx-swap="none">
-        <input type="hidden" name="cmnd" value="IRSend NEC-4-8-0" />
-        <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Power</button>
-      </form>
-      <form hx-get="/cm" hx-swap="none">
-        <input type="hidden" name="cmnd" value="IRSend NEC-4-2-0" />
-        <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Volume +</button>
-      </form>
-      <form hx-get="/cm" hx-swap="none">
-        <input type="hidden" name="cmnd" value="IRSend NEC-4-3-0" />
-        <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Volume -</button>
-      </form>
+      <div class="mui-container-fluid">
+        <div class="mui-row">
+          <div class="mui-col-xs-6">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-8-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--danger">Power</button>
+            </form>
+          </div>
+          <div class="mui-col-xs-6">
+          </div>
+        </div>
+        <div class="mui-row">
+          <div class="mui-col-xs-6">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-2-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Volume +</button>
+            </form>
+          </div>
+          <div class="mui-col-xs-6">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-3-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Volume -</button>
+            </form>
+          </div>
+        </div>
     </div>
   </body>
 </html>
