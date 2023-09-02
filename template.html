@@ -98,6 +98,7 @@
         </div>
     </div>
 
+    <!-- LG C1 Remote -->
     <div class="mui-tabs__pane" id="pane-default-1">
       <div class="mui-container-fluid">
         <div class="mui-row">
@@ -121,6 +122,32 @@
             <form hx-get="/cm" hx-swap="none">
               <input type="hidden" name="cmnd" value="IRSend NEC-4-3-0" />
               <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Volume -</button>
+            </form>
+          </div>
+        </div>
+        <div class="mui-row">
+          <div class="mui-col-xs-3">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-CE-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">HDMI 1</button>
+            </form>
+          </div>
+          <div class="mui-col-xs-3">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-CC-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">HDMI 2</button>
+            </form>
+          </div>
+          <div class="mui-col-xs-3">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-E9-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">HDMI 3</button>
+            </form>
+          </div>
+          <div class="mui-col-xs-3">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-DA-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">HDMI 4</button>
             </form>
           </div>
         </div>
