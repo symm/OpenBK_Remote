@@ -109,6 +109,10 @@
             </form>
           </div>
           <div class="mui-col-xs-6">
+            <form hx-get="/cm" hx-swap="none">
+              <input type="hidden" name="cmnd" value="IRSend NEC-4-9-0" />
+              <button hx-ext="disable-element" hx-disable-element="self" class="mui-btn mui-btn--large mui-btn--primary">Mute</button>
+            </form>
           </div>
         </div>
         <div class="mui-row">
